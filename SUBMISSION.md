@@ -59,13 +59,13 @@ Bài nâng cao (tuỳ chọn) có thể thêm `labels/pilot_reviewed.json`, `lab
 ## Checklist trước khi nộp
 
 - [ ] Repo **public**, tên đúng quy tắc, mở được khi chưa đăng nhập.
-- [ ] `README.md` tiêu đề đúng `MSHV - Họ và tên`; `STUDENT.md` điền đủ, kể cả kết quả tóm tắt.
-- [ ] ≥ 4 commit bằng tài khoản của bạn, theo từng Part.
-- [ ] `python scripts/validate_labels.py --all` sạch.
+- [x] `README.md` tiêu đề đúng `MSHV - Họ và tên`; `STUDENT.md` điền đủ, kể cả kết quả tóm tắt.
+- [x] ≥ 4 commit bằng tài khoản của bạn, theo từng Part.
+- [x] `python scripts/validate_labels.py --all` sạch.
 - [ ] `model_log.csv` (có dòng **SAM**, ghi rõ phiên bản) và `time_log.csv` là số thật; mỗi dòng log có nhận xét.
-- [ ] `calibration_decisions.csv` ≥ 3 dòng; nội dung đã vào `guideline_v1.1_calibrated.md`, mỗi ca khó có ảnh ví dụ.
-- [ ] `REPORT.md` điền đủ 8 mục: tỉ lệ kèm mẫu số, quyết định Release / Hold / Rework, giới hạn mẫu nhỏ, 3 quy tắc giảm thiên kiến.
-- [ ] `submission/masks/` có ≥ 3 ảnh.
-- [ ] `python scripts/check_submission.py` không còn `LỖI`.
-- [ ] Không có token, `work/`, trọng số, hay dữ liệu ngoài phạm vi.
-- [ ] Đã nộp link repo trước hạn.
+- [x] `calibration_decisions.csv` ≥ 3 dòng; nội dung đã vào `guideline_v1.1_calibrated.md`, mỗi ca khó có ảnh ví dụ.
+- [x] `REPORT.md` điền đủ 8 mục: tỉ lệ kèm mẫu số, quyết định Release / Hold / Rework, giới hạn mẫu nhỏ, 3 quy tắc giảm thiên kiến.
+- [x] `submission/masks/` có ≥ 3 ảnh.
+- [x] `python scripts/check_submission.py` không còn `LỖI`.
+- [x] Không có token, `work/`, trọng số, hay dữ liệu ngoài phạm vi.
+- [x] Đã nộp link repo trước hạn.
