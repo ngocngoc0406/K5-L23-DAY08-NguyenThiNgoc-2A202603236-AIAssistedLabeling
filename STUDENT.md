@@ -5,7 +5,7 @@
 - Lớp (L2 / L3 / khác): K5-L23
 - Tài khoản GitHub: ngocngoc0406
 - Repo bài nộp (URL): https://github.com/ngocngoc0406/K5-L23-DAY08-NguyenThiNgoc-2A202603236-AIAssistedLabeling
-- Commit chốt bài (hash): <<>>
+- Commit chốt bài (hash): 885891468639504c28dfd96094d2abde6edef11b
 - Máy: Windows 11, GPU NVIDIA RTX 3050 Laptop 4 GB (CUDA)
 - CVAT (Docker): v2.81.0
 
