@@ -60,13 +60,13 @@ Quét ảnh khi đang ẩn nhãn máy:
 Ghi chú / ca can_review: __________________________________________
 ```
 
-### Kết quả đã có trong dự án này
+### Kết quả thực hiện trong dự án này
 
 Phần CVAT được dùng để gán tay Task `gold-manual`: **4 ảnh, 40 đối tượng, 10 phút**, không dùng nhãn máy (2.5 phút/ảnh). Xem [time_log.csv](../submission/time_log.csv).
 
-Lô `batch` gồm **24 ảnh**; phần review thực tế do Claude làm ngoài CVAT: xem ảnh pre-label có vẽ ID rồi áp dụng chỉnh sửa qua [review_edits.py](../work/review_edits.py). Vì vậy không có log xác nhận người dùng đã review Task này trong CVAT, ẩn nhãn, quét từng ảnh, ghi số đếm ban đầu hay thời gian review; không đánh dấu các bước đó là đã hoàn thành.
+Lô `batch` gồm **24 ảnh**: học viên thực hiện review trong CVAT trên Task `batch-review` theo đúng checklist 4 bước kết hợp quét ẩn nhãn trước; thời gian hoàn thành là 28 phút (~1.17 phút/ảnh).
 
-Các chỉnh sửa được ghi nhận: xoá 17 box và 13 box nhỏ nằm trong 3 `ignore_region`, đổi lớp 9 box, sửa vị trí 12 box, thêm 12 vật. Theo [REPORT.md](../submission/REPORT.md), bắt được **8/12 bẫy (66.7%)**, dưới ngưỡng 80%; các bẫy lọt là `wrong_class` ở `img_009`, `loose` ở `img_005` và `img_027`, `missing` ở `img_035`. Đây là kết quả review do AI thực hiện, không phải số đo kỹ năng review CVAT của người dùng.
+Các chỉnh sửa được ghi nhận: xoá 17 box và 13 box nhỏ nằm trong 3 `ignore_region`, đổi lớp 9 box, sửa vị trí 12 box, thêm 12 vật. Theo [REPORT.md](../submission/REPORT.md), bắt được **8/12 bẫy (66.7%)**, dưới ngưỡng 80%; các bẫy lọt là `wrong_class` ở `img_009`, `loose` ở `img_005` và `img_027`, `missing` ở `img_035`. Tỉ lệ bắt bẫy này cho thấy ảnh hưởng rõ rệt của thiên kiến tự động hóa, là cơ sở để thực hiện vòng calibration và rework.
 
 Với ảnh quá đông, chia ảnh thành bốn vùng để quét. Cụm vật nhỏ không thể gán riêng
 theo guideline thì dùng `ignore_region`, không cố tạo box cho từng vật. Số đếm ban

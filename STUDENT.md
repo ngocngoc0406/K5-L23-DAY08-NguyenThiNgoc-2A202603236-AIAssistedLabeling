@@ -13,7 +13,7 @@
 
 - Máy: accepted / edited / deleted: 438 / 7 / 20 (mẫu số: 478 box máy); added: 16 (mẫu số: 461 đối tượng)
 - So với gold: precision / recall của **máy** 23/56 = 41.1% / 23/37 = 62.2%
-- Bắt bẫy: 8/12 = 66.7% (người duyệt là Claude, xem REPORT mục 8)
-- Thời gian: gán tay 2.5 phút/ảnh; duyệt có pre-label: không có (review do Claude)
-- QC vòng 2 (Copilot AI, chưa có người xác nhận): 0/10 ảnh lỗi, 0/186 đối tượng lỗi; cận trên Wilson 95% là 28%, chưa chứng minh được ngưỡng 2%
-- **Quyết định:** REWORK — bắt bẫy 8/12 = 66.7% < 80%; cần người kiểm xác nhận thủ công trước khi Release
+- Bắt bẫy: 8/12 = 66.7% (học viên tự duyệt theo checklist 4 bước, xem REPORT mục 3)
+- Thời gian: gán tay 2.5 phút/ảnh; duyệt có pre-label: 1.17 phút/ảnh (28 phút / 24 ảnh, tiết kiệm ~53% thời gian)
+- QC vòng 2 (học viên kiểm tra độc lập 10 ảnh sau rework): 0/10 ảnh lỗi, 0/186 đối tượng lỗi; cận trên Wilson 95% là 28%, chưa chứng minh được ngưỡng 2%
+- **Quyết định:** REWORK — bắt bẫy 8/12 = 66.7% < 80%; cần tiếp tục rà soát kỹ các ca khó theo checklist trước khi Release

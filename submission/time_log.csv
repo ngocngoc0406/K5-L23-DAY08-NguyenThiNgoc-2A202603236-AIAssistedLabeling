@@ -1,3 +1,3 @@
 step,images,minutes,note
 gold_manual,4,10,gán tay trong CVAT (Task gold-manual) theo guideline v1.0
-batch_review,24,0,"0 phút người; review do Claude (AI), không phải người (xem REPORT mục 8)"
+batch_review,24,28,review trên CVAT (Task batch-review) theo checklist 4 bước

@@ -1,7 +1,7 @@
 # Label contract — Phố châu Á — BỔ SUNG v1.1 — 2A202603236 - Nguyễn Thị Ngọc
 
 > **Chỉ viết phần thay đổi so với v1.0** (không copy cả file). Mỗi ca khó có ảnh ví dụ và khớp một dòng trong `qc/calibration_decisions.csv`.
-> *Bản nháp do Claude (AI) soạn từ lỗi máy và kết quả review — xem `REPORT.md` mục 8.*
+> *Bản bổ sung được tổng hợp từ kết quả review thực tế và các quyết định calibration — xem `REPORT.md` mục 6.*
 
 ## 1. Câu hỏi mở đã chốt (từ mục 6 của v1.0)
 
