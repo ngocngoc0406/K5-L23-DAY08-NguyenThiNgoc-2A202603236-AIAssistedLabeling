@@ -1,4 +1,4 @@
-# Báo cáo Day 08 — <<MSHV - Họ và tên>>
+# Báo cáo Day 08 — 2A202603236 - Nguyễn Thị Ngọc
 
 > Một file duy nhất cho cả bài (đã gộp recipe, QC và ghi chú cá nhân). Mọi con số kèm **mẫu số** và nguồn (file nào). Viết bằng lời của bạn.
 
@@ -69,7 +69,7 @@ Nếu Rework / Hold, việc cần làm tiếp: <<>>
 
 ## 8. Ghi chú cá nhân
 
-- **Dùng AI để làm bài** (công cụ nào, việc gì, kiểm tra thế nào; "không dùng" nếu không): <<>>
+- **Dùng AI để làm bài** (công cụ nào, việc gì, kiểm tra thế nào; "không dùng" nếu không): Claude Code (Claude Opus 5.5) chạy cài đặt, các lệnh `prelabel.py` / script đo. **Phần review batch (Part 4) do Claude làm, KHÔNG phải tôi duyệt:** Claude xem ảnh pre-label có vẽ id (`scripts/viz.py --ids`), quyết định xoá / đổi lớp / sửa box / thêm vật / `ignore_region`, ghi trong `work/review_edits.py` (xoá 17 box + 13 box nhỏ trong 3 `ignore_region`, đổi lớp 9, sửa box 12, thêm 12 vật) → `labels/batch_reviewed.json`. Không mở `traps_key.json` trước khi xong; sau khi chạy `review_stats` (bắt 8/12) **không sửa thêm** theo đáp án. Vì vậy số bắt bẫy và AI error profile ở mục 2–3 đo **Claude làm người duyệt**, không đo tôi; không có thời gian `batch_review` của người trong `time_log.csv`.
 - Gold có bị nhiễm không (bạn có nhìn pre-label hay hỏi AI trước khi gán xong)? <<không / có, như sau: ...>>
 - Máy / GPU / CVAT dùng; vướng mắc cài đặt: <<>>
 - Dùng cache `data/cache/` thay vì tự chạy? <<không / có, vì ...>>
