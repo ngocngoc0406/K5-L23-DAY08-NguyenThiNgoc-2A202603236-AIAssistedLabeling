@@ -23,12 +23,55 @@ Hai loại lỗi của người duyệt: **bỏ qua** (máy không vẽ thì b�
 **Bước 0 — Quét ảnh trước.** Ẩn hết nhãn máy. Nhìn ảnh ~15 giây, tự đếm vật theo lớp (nhẩm: "6 người, 4 xe máy, 1 tuk-tuk, vài xe ở xa").
 Chỉ khi xong mới hiện nhãn máy.
 
+### Thao tác tương ứng trong CVAT
+
+1. Mở job của Task `batch-review`; dùng biểu tượng con mắt ở danh sách **Objects** để ẩn tất cả nhãn.
+2. Quét ảnh và ghi số lượng ước tính trước khi bật nhãn máy trở lại.
+3. Dùng `Tab` để chuyển box, `Del` để xoá, `Ctrl` + `1…9` hoặc `0` để đổi lớp, `N` để lặp thao tác vẽ box gần nhất, `F` / `D` để chuyển ảnh, `Ctrl` + `S` để lưu.
+4. Phóng to khi kiểm bốn cạnh, nhất là box `three_wheeler`, box có `conf < 0.5` và các ảnh đông.
+5. Sau khi hoàn tất, export Task dạng **COCO 1.0** để chạy `review_stats.py`; không dùng `source` trong CVAT thay cho phép so sánh file này.
+
 | # | Câu hỏi | Việc làm | Trạng thái cuối |
 |---|---|---|---|
 | 1 | **Bỏ sót**: còn vật nào chưa có box? (đặc biệt xa, bị che, mép ảnh, tuk-tuk / xích lô) | vẽ thêm (`N`) | `added` |
 | 2 | **Thừa**: box nào không có vật thật? (bóng, tượng, phản chiếu, cột, biển) | xoá (`Del`) | `deleted` |
 | 3 | **Sai nhãn**: đúng lớp chưa? (tuk-tuk bị gọi `car`/`truck`; xe ba gác thành `motorbike`) | đổi nhãn (`Ctrl+số`) | `edited` (xem 4) |
 | 4 | **Lỏng**: box ôm đủ vật, không dư nền? mask bám biên? | kéo lại | `edited` |
+
+### Phiếu review — lặp lại cho từng ảnh
+
+```text
+Ảnh: ____________________    Task/job: ____________________
+
+Quét ảnh khi đang ẩn nhãn máy:
+  person ____  bicycle ____  motorbike ____  car ____
+  bus ____  truck ____  three_wheeler ____  ignore_region ____
+
+[ ] Ẩn nhãn máy, quét toàn ảnh và ghi số lượng ước tính theo lớp.
+[ ] Hiện nhãn máy; đối chiếu từng lớp với số lượng vừa ghi.
+[ ] Bỏ sót: kiểm tra vật xa, bị che, sát mép ảnh và xe ba bánh; thêm vật còn thiếu.
+[ ] Thừa: kiểm tra từng box có vật thật tương ứng; xoá box ma / box nhầm vùng.
+[ ] Sai nhãn: kiểm tra tuk-tuk, xích lô, ba gác và các lớp dễ nhầm; sửa nhãn.
+[ ] Lỏng: phóng to, kiểm tra đủ 4 cạnh từng box; sửa box quá rộng / cắt vật.
+[ ] Kiểm tra lại các vật đã sửa và box có điểm thấp; điểm cao không phải lý do để bỏ qua.
+[ ] Ca chưa chắc quy tắc: đánh dấu can_review và ghi chú để calibration.
+[ ] Lưu ảnh trước khi chuyển sang ảnh tiếp theo.
+
+Ghi chú / ca can_review: __________________________________________
+```
+
+### Kết quả đã có trong dự án này
+
+Phần CVAT được dùng để gán tay Task `gold-manual`: **4 ảnh, 40 đối tượng, 10 phút**, không dùng nhãn máy (2.5 phút/ảnh). Xem [time_log.csv](../submission/time_log.csv).
+
+Lô `batch` gồm **24 ảnh**; phần review thực tế do Claude làm ngoài CVAT: xem ảnh pre-label có vẽ ID rồi áp dụng chỉnh sửa qua [review_edits.py](../work/review_edits.py). Vì vậy không có log xác nhận người dùng đã review Task này trong CVAT, ẩn nhãn, quét từng ảnh, ghi số đếm ban đầu hay thời gian review; không đánh dấu các bước đó là đã hoàn thành.
+
+Các chỉnh sửa được ghi nhận: xoá 17 box và 13 box nhỏ nằm trong 3 `ignore_region`, đổi lớp 9 box, sửa vị trí 12 box, thêm 12 vật. Theo [REPORT.md](../submission/REPORT.md), bắt được **8/12 bẫy (66.7%)**, dưới ngưỡng 80%; các bẫy lọt là `wrong_class` ở `img_009`, `loose` ở `img_005` và `img_027`, `missing` ở `img_035`. Đây là kết quả review do AI thực hiện, không phải số đo kỹ năng review CVAT của người dùng.
+
+Với ảnh quá đông, chia ảnh thành bốn vùng để quét. Cụm vật nhỏ không thể gán riêng
+theo guideline thì dùng `ignore_region`, không cố tạo box cho từng vật. Số đếm ban
+đầu là ước tính độc lập để gợi ý chỗ cần kiểm tra, không phải con số bắt buộc phải
+khớp trước khi xem nhãn máy.
 
 Không lỗi → giữ nguyên (`accepted`). Gặp ca bạn **không chắc quy tắc** → tick `can_review` (và ghi vào bảng calibration sau).
 

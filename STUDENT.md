@@ -2,7 +2,7 @@
 
 - Họ và tên: Nguyễn Thị Ngọc
 - MSHV: 2A202603236
-- Lớp (L2 / L3 / khác): <<>>
+- Lớp (L2 / L3 / khác): K5-L23
 - Tài khoản GitHub: ngocngoc0406
 - Repo bài nộp (URL): https://github.com/ngocngoc0406/K5-L23-DAY08-NguyenThiNgoc-2A202603236-AIAssistedLabeling
 - Commit chốt bài (hash): <<>>
@@ -11,9 +11,9 @@
 
 ## Kết quả tóm tắt (điền cuối bài; số lấy từ `submission/qc/*`, kèm mẫu số)
 
-- Máy: accepted / edited / deleted: <<... / ... / ... (mẫu số: ... box máy)>>; added: <<... (mẫu số: ... đối tượng)>>
-- So với gold: precision / recall của **máy** <<... / ...>>
-- Bắt bẫy: <<.../12 = ...%>>
-- Thời gian: gán tay <<... phút/ảnh>>; duyệt có pre-label <<... phút/ảnh>>
-- Lỗi QC: <<...% theo ảnh (.../...)>>, <<...% theo đối tượng (.../...)>>
-- **Quyết định:** <<Release / Hold / Rework>> — lý do một dòng: <<...>>
+- Máy: accepted / edited / deleted: 438 / 7 / 20 (mẫu số: 478 box máy); added: 16 (mẫu số: 461 đối tượng)
+- So với gold: precision / recall của **máy** 23/56 = 41.1% / 23/37 = 62.2%
+- Bắt bẫy: 8/12 = 66.7% (người duyệt là Claude, xem REPORT mục 8)
+- Thời gian: gán tay 2.5 phút/ảnh; duyệt có pre-label: không có (review do Claude)
+- QC vòng 2 (Copilot AI, chưa có người xác nhận): 0/10 ảnh lỗi, 0/186 đối tượng lỗi; cận trên Wilson 95% là 28%, chưa chứng minh được ngưỡng 2%
+- **Quyết định:** REWORK — bắt bẫy 8/12 = 66.7% < 80%; cần người kiểm xác nhận thủ công trước khi Release
