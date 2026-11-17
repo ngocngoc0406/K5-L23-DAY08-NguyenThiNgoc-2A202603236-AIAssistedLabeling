@@ -24,6 +24,17 @@ Trong số deleted + added, **4 trường hợp là đổi lớp** (máy gán sa
 | truck | 4 | 0 | 1 | 1 |
 | three_wheeler | 8 | 5 | 9 | 5 |
 
+## 2. So với gold (nhãn gán tay từ đầu)
+Ảnh gold: 4; đối tượng gold: 37 (mẫu số của recall)
+| | TP | FP | FN | Precision | Recall |
+|---|---|---|---|---|---|
+| Máy (pre-label) | 23 | 33 | 14 | 41.1% (KTC 95%: 29–54%) | 62.2% (KTC 95%: 46–76%) |
+
+*Lạc quan: ngưỡng được chọn trên chính các ảnh gold này (in-sample), và chỉ có 4 ảnh. Đọc khoảng tin cậy, đừng đọc con số đơn.*
+
+
+(Ảnh gold không nằm trong nhãn sau duyệt: không tính residual / new error. Đó là chủ ý: duyệt lại ảnh bạn vừa tự gán tay sẽ đo trí nhớ, không đo thiên kiến.)
+
 ## 3. Ảnh bẫy
 - Bắt được 8/12 = 66.7% (KTC 95%: 39–86%) (ngưỡng đạt: 80%). Chỉ 12 bẫy nên khoảng tin cậy rất rộng: đọc cùng danh sách bẫy lọt, đừng kết luận chỉ từ %.
   - wrong_class: 2/3
