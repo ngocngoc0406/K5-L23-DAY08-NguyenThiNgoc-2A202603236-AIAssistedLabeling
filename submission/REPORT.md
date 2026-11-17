@@ -73,5 +73,5 @@ Nếu Rework / Hold, việc cần làm tiếp: <<>>
 - Gold có bị nhiễm không (bạn có nhìn pre-label hay hỏi AI trước khi gán xong)? <<không / có, như sau: ...>>
 - Máy / GPU / CVAT dùng; vướng mắc cài đặt: <<>>
 - Dùng cache `data/cache/` thay vì tự chạy? <<không / có, vì ...>>
-- Lỗi / bug script đã gặp (nếu có): <<>>
+- Lỗi / bug script đã gặp (nếu có): `scripts/check_submission.py` chỉ nhận MSHV toàn chữ số (`\d{5,}`), MSHV `2A202603236` có chữ cái nên bị báo sai "README thiếu tiêu đề" → sửa regex thành `[0-9A-Za-z]{5,}`. Trên Windows phải chạy với `PYTHONUTF8=1` (không thì subprocess đọc output bằng cp1252 và crash).
 - Một điều bạn làm khác lần sau: <<>>
